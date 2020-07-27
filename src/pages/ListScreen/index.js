@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from 'react';
+import React, {useLayoutEffect, useCallback} from 'react';
 
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
@@ -22,22 +22,21 @@ export default () => {
     navigation.setOptions({
       title: 'Notes',
       headerRight: () => (
-        <HeaderAddButton
-          underlayColor="transparent"
-          onPress={() => {
-            navigation.navigate('EditNote');
-          }}>
+        <HeaderAddButton underlayColor="transparent" onPress={handleNotePress}>
           <FeatherIcon name="plus" size={22} color="#fff" />
         </HeaderAddButton>
       ),
     });
-  }, [navigation]);
+  }, [navigation, handleNotePress]);
 
-  const handleNotePress = (index) => {
-    navigation.navigate('EditNote', {
-      key: index,
-    });
-  };
+  const handleNotePress = useCallback(
+    (index) => {
+      navigation.navigate('EditNote', {
+        key: index,
+      });
+    },
+    [navigation],
+  );
 
   return (
     <Container>
@@ -46,7 +45,12 @@ export default () => {
           keyExtractor={(item, index) => index.toString()}
           data={list}
           renderItem={({item, index}) => (
-            <NoteItem data={item} index={index} onPress={handleNotePress} />
+            <NoteItem
+              key={index}
+              data={item}
+              index={index}
+              onPress={handleNotePress}
+            />
           )}
         />
       )}

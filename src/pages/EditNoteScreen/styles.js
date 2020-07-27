@@ -25,3 +25,7 @@ export const BodyInput = styled.TextInput`
   font-size: 15px;
   color: #fff;
 `;
+
+export const CloseButton = styled.TouchableHighlight`
+  margin-left: 15px;
+`;
