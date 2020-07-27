@@ -19,17 +19,20 @@ export default () => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
+      title: title !== '' ? title : 'New Note',
       headerRight: () => (
         <HeaderAddButton underlayColor="transparent">
           <FeatherIcon name="save" size={25} color="#fff" />
         </HeaderAddButton>
       ),
     });
-  }, [navigation]);
+  }, [navigation, title]);
 
   useEffect(() => {
     if (route.params?.key !== undefined && list[route.params.key]) {
       setStatus('edit');
+      setTitle(list[route.params.key].title);
+      setBody(list[route.params.key].body);
     }
   }, [route.params, list]);
 
