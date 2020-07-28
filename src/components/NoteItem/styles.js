@@ -5,7 +5,7 @@ export const NoteBox = styled.TouchableHighlight`
   padding-left: 16px;
   background: #222;
   border-radius: 15px;
-  border-left-width: 10px;
+  border-left-width: 3px;
   border-left-color: #7159c1;
   margin-bottom: 8px;
   flex-direction: row;
