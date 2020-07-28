@@ -17,6 +17,12 @@ export const Button = styled.Button``;
 
 export const HeaderAddButton = styled.TouchableHighlight`
   margin-right: 15px;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  background: #7159c1;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const NotesList = styled(FlatList)`

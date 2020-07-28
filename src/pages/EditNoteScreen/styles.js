@@ -2,6 +2,11 @@ import styled from 'styled-components/native';
 
 export const HeaderAddButton = styled.TouchableHighlight`
   margin-right: 15px;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Container = styled.SafeAreaView`
@@ -28,4 +33,21 @@ export const BodyInput = styled.TextInput`
 
 export const CloseButton = styled.TouchableHighlight`
   margin-left: 15px;
+`;
+
+export const DeleteButton = styled.TouchableHighlight`
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background: #db4444;
+  flex-direction: row;
+`;
+
+export const DeleteButtonText = styled.Text`
+  font-size: 17px;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 10px;
 `;

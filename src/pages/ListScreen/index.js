@@ -22,8 +22,8 @@ export default () => {
     navigation.setOptions({
       title: 'Notes',
       headerRight: () => (
-        <HeaderAddButton underlayColor="transparent" onPress={handleNotePress}>
-          <FeatherIcon name="plus" size={22} color="#fff" />
+        <HeaderAddButton underlayColor="#664fb0" onPress={handleNotePress}>
+          <FeatherIcon name="plus" size={25} color="#fff" />
         </HeaderAddButton>
       ),
     });

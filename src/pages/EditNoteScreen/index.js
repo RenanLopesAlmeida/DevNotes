@@ -11,6 +11,8 @@ import {
   TitleInput,
   BodyInput,
   CloseButton,
+  DeleteButton,
+  DeleteButtonText,
 } from './styles';
 
 export default () => {
@@ -35,14 +37,14 @@ export default () => {
       title: title !== '' ? title : 'New Note',
       headerRight: () => (
         <HeaderAddButton underlayColor="transparent" onPress={handleSaveButton}>
-          <FeatherIcon name="save" size={25} color="#fff" />
+          <FeatherIcon name="save" size={25} color="#36d172" />
         </HeaderAddButton>
       ),
     });
   }, [status, navigation, title, body, handleSaveButton]);
 
   useEffect(() => {
-    if (route.params?.key !== undefined && list[route.params?.key]) {
+    if (route.params?.key !== undefined && list[route.params.key]) {
       setStatus('edit');
       setTitle(list[route.params.key].title);
       setBody(list[route.params.key].body);
@@ -73,6 +75,17 @@ export default () => {
     }
   }, [title, body, dispatch, status, navigation, route.params.key]);
 
+  const handleDeleteButton = useCallback(
+    (index) => {
+      dispatch({
+        type: 'DELETE_NOTE',
+        payload: {key: index},
+      });
+      navigation.goBack();
+    },
+    [dispatch, navigation],
+  );
+
   return (
     <Container>
       <TitleInput
@@ -91,6 +104,17 @@ export default () => {
         value={body}
         onChangeText={(text) => setBody(text)}
       />
+
+      {status === 'edit' && (
+        <DeleteButton
+          underlayColor="#b83b3b"
+          onPress={() => handleDeleteButton(route.params.key)}>
+          <>
+            <DeleteButtonText>Delete</DeleteButtonText>
+            <FeatherIcon name="trash" size={20} color="#fff" />
+          </>
+        </DeleteButton>
+      )}
     </Container>
   );
 };

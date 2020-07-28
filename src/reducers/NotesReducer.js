@@ -21,6 +21,12 @@ export default (state = initialState, action) => {
         };
       }
       break;
+
+    case 'DELETE_NOTE':
+      if (newList[action.payload.key]) {
+        newList = newList.filter((item, index) => index !== action.payload.key);
+      }
+      break;
   }
   return {...initialState, list: newList};
 };
